@@ -12,6 +12,7 @@ public class Servidor : ScriptableObject
 
     public bool ocupado = false;
     public Respuesta respuesta;
+    public string fakeRespuesta;
 
     public IEnumerator ConsumirServicio(string nombre, string[] datos, UnityAction e)
     {
@@ -47,6 +48,72 @@ public class Servidor : ScriptableObject
         ocupado = false;
         e.Invoke();
     }
+
+    public IEnumerator ConsumirServicioFake(string nombre, string[] datos, UnityAction e)
+    {
+        ocupado = true;
+        WWWForm formulario = new WWWForm();
+        Servicio s = new Servicio();
+        for (int i = 0; i < servicios.Length; i++)
+        {
+            if (servicios[i].nombre.Equals(nombre))
+            {
+                s = servicios[i];
+            }
+        }
+        string _parametros = s.parametros[0] + "=" + datos[0];
+        
+
+        UnityWebRequest www = UnityWebRequest.Get(servidor + "/" + s.URL + "?" + _parametros);
+        Debug.Log(servidor + "/" + s.URL + "?" + _parametros);
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            fakeRespuesta = "Error";
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+            fakeRespuesta = www.downloadHandler.text;
+        }
+        ocupado = false;
+        e.Invoke();
+    }
+
+
+    public IEnumerator ConsumirPersonalizacion(string nombre, string[] datos, UnityAction e)
+    {
+        ocupado = true;
+        WWWForm formulario = new WWWForm();
+        Servicio s = new Servicio();
+        for (int i = 0; i < servicios.Length; i++)
+        {
+            if (servicios[i].nombre.Equals(nombre))
+            {
+                s = servicios[i];
+            }
+        }
+        string _parametros = s.parametros[0] + "=" + datos[0] + "&" + s.parametros[1] + "=" + datos[1];
+
+
+        UnityWebRequest www = UnityWebRequest.Get(servidor + "/" + s.URL + "?" + _parametros);
+        Debug.Log(servidor + "/" + s.URL + "?" + _parametros);
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            fakeRespuesta = "Error";
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+            fakeRespuesta = www.downloadHandler.text;
+        }
+        ocupado = false;
+        e.Invoke();
+    }
+
 }
 [System.Serializable]
 public class Servicio

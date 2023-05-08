@@ -18,8 +18,8 @@ public class CuerpoPersonalizable : MonoBehaviour
 
     private void Awake()
     {
-        Cargar();
-        AplicarColores();
+        //Cargar();
+        //AplicarColores();
     }
 
     public void Guardar()
@@ -35,6 +35,20 @@ public class CuerpoPersonalizable : MonoBehaviour
         texto += iColorRopa2.ToString() + "|";
         //print(texto);
         PlayerPrefs.SetString("personaje", texto);
+    }
+    public string ToTexto()
+    {
+        string texto = "";
+        for (int i = 0; i < partes.Length; i++)
+        {
+            texto += partes[i].indice.ToString() + "|";
+        }
+        texto += iColorPiel.ToString() + "|";
+        texto += iColorCabello.ToString() + "|";
+        texto += iColorRopa1.ToString() + "|";
+        texto += iColorRopa2.ToString() + "|";
+        //print(texto);
+        return (texto);
     }
 
     public void Cargar()
@@ -52,6 +66,23 @@ public class CuerpoPersonalizable : MonoBehaviour
         iColorRopa1     = int.Parse(arreglo[partes.Length + 2]);
         iColorRopa2     = int.Parse(arreglo[partes.Length + 3]);
         //print(texto);
+        AplicarColores();
+    }
+    public void Cargar(string texto)
+    {
+        string[] arreglo = texto.Split('|');
+        for (int i = 0; i < partes.Length; i++)
+        {
+            partes[i].indice = int.Parse(arreglo[i]);
+            partes[i].Activar();
+        }
+
+        iColorPiel = int.Parse(arreglo[partes.Length + 0]);
+        iColorCabello = int.Parse(arreglo[partes.Length + 1]);
+        iColorRopa1 = int.Parse(arreglo[partes.Length + 2]);
+        iColorRopa2 = int.Parse(arreglo[partes.Length + 3]);
+        //print(texto);
+        AplicarColores();
     }
 
     public void AplicarColores()

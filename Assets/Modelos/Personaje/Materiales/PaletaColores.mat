@@ -93,9 +93,9 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorCabello: {r: 0.1899063, g: 0.12275596, b: 0.07678456, a: 1}
-    - _ColorPiel: {r: 0.9056604, g: 0.86776793, b: 0.76383054, a: 1}
-    - _ColorRopa1: {r: 0.92126733, g: 0.9282939, b: 0.35202843, a: 1}
-    - _ColorRopa2: {r: 0.13542555, g: 0.41970515, b: 0.38985083, a: 1}
+    - _ColorCabello: {r: 0, g: 0.5547986, b: 1, a: 1}
+    - _ColorPiel: {r: 0.8700209, g: 0.66015756, b: 0.4940469, a: 1}
+    - _ColorRopa1: {r: 0.051178824, g: 0.7242319, b: 0.40261438, a: 1}
+    - _ColorRopa2: {r: 0.24580242, g: 0.3051635, b: 0.46716356, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

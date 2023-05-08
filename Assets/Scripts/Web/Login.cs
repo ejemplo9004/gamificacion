@@ -12,9 +12,26 @@ public class Login : MonoBehaviour
     public GameObject imLoading;
     public DBUsuario usuario;
     public Text txtLog;
-    public void IniciarSesion()
+
+    public RespuestaLogin respuestaLogin;
+
+
+	private void Start()
+	{
+        string uss = PlayerPrefs.GetString("usuario", "");
+		if (uss.Length > 1)
+		{
+            inpUsuario.text = uss;
+            IniciarSesionFake();
+        }
+    }
+	public void IniciarSesion()
     {
         StartCoroutine(Iniciar());
+    }
+    public void IniciarSesionFake()
+    {
+        StartCoroutine(IniciarSesionCodigo());
     }
 
     IEnumerator Iniciar()
@@ -55,4 +72,27 @@ public class Login : MonoBehaviour
                 break;
         }
     }
+
+    public IEnumerator IniciarSesionCodigo()
+	{
+        imLoading.SetActive(true);
+        string[] datos = new string[1];
+        datos[0] = inpUsuario.text;
+
+        StartCoroutine(servidor.ConsumirServicioFake("login", datos, PosFake));
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => !servidor.ocupado);
+        imLoading.SetActive(false);
+    }
+
+    void PosFake()
+	{
+		if (servidor.fakeRespuesta != "Error")
+		{
+            respuestaLogin = JsonUtility.FromJson<RespuestaLogin>(servidor.fakeRespuesta);
+            PlayerPrefs.SetString("datos", servidor.fakeRespuesta);
+            PlayerPrefs.SetString("usuario", inpUsuario.text);
+            SceneManager.LoadScene("Menu");
+		}
+	}
 }

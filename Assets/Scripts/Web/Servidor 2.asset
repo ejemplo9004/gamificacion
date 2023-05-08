@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d2829a4de5f8d4b8cba66711cc6ac6, type: 3}
   m_Name: Servidor 2
   m_EditorClassIdentifier: 
-  servidor: https://arquimedes.udea.edu.co:8091/ingemon
+  servidor: http://localhost/udi
   servicios:
   - nombre: login
-    URL: login
+    URL: login.php
     parametros:
-    - name
-    - password
-  - nombre: check
-    URL: check.php
-    parametros: []
+    - codigo
+  - nombre: avatar
+    URL: custom.php
+    parametros:
+    - id
+    - avatar
   - nombre: registrar usuario
     URL: reg_usuario.php
     parametros:
@@ -29,8 +30,9 @@ MonoBehaviour:
     - pass
     - jugador
     - nivel
-  ocupado: 1
+  ocupado: 0
   respuesta:
     codigo: 404
     mensaje: Error
     respuesta: 
+  fakeRespuesta: Error
