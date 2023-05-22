@@ -78,6 +78,7 @@ public class Login : MonoBehaviour
         imLoading.SetActive(true);
         string[] datos = new string[1];
         datos[0] = inpUsuario.text;
+        yield return new WaitForSeconds(1.5f);
 
         StartCoroutine(servidor.ConsumirServicioFake("login", datos, PosFake));
         yield return new WaitForSeconds(0.5f);

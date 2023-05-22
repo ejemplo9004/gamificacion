@@ -10,6 +10,7 @@ public class RespuestaLogin
     public Evaluacion[] evaluaciones;
     public Evaluacion[] evagrupo;
     public Persona[] compas;
+    public Clan[] infoClan;
     public Persona[] clan;
 }
 
@@ -33,6 +34,13 @@ public class Nota
     public string   nombre;
     public string   codigo;
     public int      porcentaje;
+}
+[System.Serializable]
+public class Clan
+{
+    public int id;
+    public string nombre;
+    public int oro;
 }
 
 [System.Serializable]

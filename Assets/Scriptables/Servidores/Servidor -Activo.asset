@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d2829a4de5f8d4b8cba66711cc6ac6, type: 3}
   m_Name: Servidor -Activo
   m_EditorClassIdentifier: 
-  servidor: http://localhost/udi
+  servidor: https://moriontutoriales.com/notas
   servicios:
   - nombre: login
     URL: login.php

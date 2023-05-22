@@ -14,6 +14,7 @@ public class InicializadorClan : MonoBehaviour
     public Transform padreNotas;
     public Text txtNombreClan;
     public Text txtNombreSujeto;
+    public Text txtOro;
 
     List<GameObject> notasInstanciadas = new List<GameObject>();
 
@@ -39,6 +40,13 @@ public class InicializadorClan : MonoBehaviour
 			}
 		}
         IniciarNotas();
+		for (int i = 0; i < respuestaLogin.infoClan.Length; i++)
+		{
+			if (respuestaLogin.infoClan[i].nombre == respuestaLogin.persona.clan)
+			{
+                txtOro.text = respuestaLogin.infoClan[i].oro.ToString();
+            }
+		}
     }
 
 	private void Update()
