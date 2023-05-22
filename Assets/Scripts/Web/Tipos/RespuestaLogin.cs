@@ -8,7 +8,9 @@ public class RespuestaLogin
     public Persona persona;
     public Nota[] notas;
     public Evaluacion[] evaluaciones;
-
+    public Evaluacion[] evagrupo;
+    public Persona[] compas;
+    public Persona[] clan;
 }
 
 [System.Serializable]
@@ -18,7 +20,8 @@ public class Persona
     public string   nombre;
     public int      institucion;
     public string   grupo;
-    public int      bonificador;
+    public string   clan;
+    public int      bonificadores;
     public string   codigo;
     public string   avatar;
 }

@@ -16,10 +16,15 @@ public class CuerpoPersonalizable : MonoBehaviour
     public int iColorRopa1;
     public int iColorRopa2;
 
+    public Renderer[] mallas;
+
     private void Awake()
     {
-        //Cargar();
-        //AplicarColores();
+        material = mallas[0].material;
+		for (int i = 1; i < mallas.Length; i++)
+		{
+            mallas[i].material = material;
+		}
     }
 
     public void Guardar()

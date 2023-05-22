@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Personalizar.unity
     guid: 585ae734037c6a34483bf5b775eb2695
+  - enabled: 1
+    path: Assets/Scenes/Clan.unity
+    guid: 72e906ca71c0b4944846bd82678fe3ab
   m_configObjects: {}
