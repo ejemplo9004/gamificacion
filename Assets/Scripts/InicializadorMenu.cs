@@ -14,7 +14,6 @@ public class InicializadorMenu : MonoBehaviour
     public Text txtNotaParcial;
     public Text txtGrupo;
     public CuerpoPersonalizable cuerpo;
-
     void Start()
     {
         string d = PlayerPrefs.GetString("datos");
@@ -23,7 +22,7 @@ public class InicializadorMenu : MonoBehaviour
         IniciarNotas();
         txtNombre.text = respuestaLogin.persona.nombre;
         CalcularNotas();
-        txtGrupo.text = "Equipo: " + respuestaLogin.persona.grupo;
+        txtGrupo.text = "Equipo: " + respuestaLogin.persona.clan;
         cuerpo.Cargar(respuestaLogin.persona.avatar);
     }
 
